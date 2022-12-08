@@ -1,5 +1,8 @@
 button:
-  about: About
+  add_image: Add image
+  upload_image: Upload image
+  zoom_in: Zoom in
+  zoom_out: Zoom out
   back: Back
   go: GO
   home: Home
