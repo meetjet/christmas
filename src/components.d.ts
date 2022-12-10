@@ -7,7 +7,6 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    CgristmasHeader: typeof import('./components/CgristmasHeader.vue')['default']
     ChristmasHeader: typeof import('./components/ChristmasHeader.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
