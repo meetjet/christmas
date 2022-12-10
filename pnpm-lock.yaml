@@ -30,6 +30,7 @@ specifiers:
   unplugin-auto-import: ^0.12.0
   unplugin-vue-components: ^0.22.11
   unplugin-vue-macros: ^1.0.3
+  upload-js: ^2.4.0
   vite: ^3.2.4
   vite-plugin-inspect: ^0.7.9
   vite-plugin-pages: ^0.27.1
@@ -52,6 +53,7 @@ dependencies:
   '@vueuse/head': 1.0.18_vue@3.2.45
   nprogress: 0.2.0
   pinia: 2.0.27_mgnvym7yiazkylwwogi5r767ue
+  upload-js: 2.4.1
   vue: 3.2.45
   vue-demi: 0.13.11_vue@3.2.45
   vue-i18n: 9.2.2_vue@3.2.45
@@ -2336,6 +2338,10 @@ packages:
     transitivePeerDependencies:
       - rollup
     dev: true
+
+  /@upload-io/upload-api-client-upload-js/2.10.0:
+    resolution: {integrity: sha512-F73xyglCCVX4drTkDt/B2kgB1nubArVx8O2rau6SDqDGM8Uf0iucXjoP4LPbSJXdCM8hP6uM5EEhuqUoqNneXA==}
+    dev: false
 
   /@vitejs/plugin-vue/3.2.0_vite@3.2.4+vue@3.2.45:
     resolution: {integrity: sha512-E0tnaL4fr+qkdCNxJ+Xd0yM31UwMkQje76fsDVBBUCoGOUPexu2VDUYHL8P4CwV+zMvWw6nlRw19OnRKmYAJpw==}
@@ -7007,6 +7013,10 @@ packages:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
     dev: true
 
+  /progress-smoother/1.3.0:
+    resolution: {integrity: sha512-vWtKd8Q1pQXHJ6Fx4pa5fbSCj+p6BPKfWufCVmagOjNKc3JsNsMfgTF55yx8UE0mNnZlnbKHr20+M/imHsnNbQ==}
+    dev: false
+
   /promise-inflight/1.0.1:
     resolution: {integrity: sha512-6zWPyEOFaQBJYcGMHBKTKJ3u6TBsnMFOIZSa6ce1e/ZrrsOlnHRHbabMjLiBYKp+n44X9eUI6VUPaukCXHuG4g==}
     peerDependencies:
@@ -8348,6 +8358,13 @@ packages:
       escalade: 3.1.1
       picocolors: 1.0.0
     dev: true
+
+  /upload-js/2.4.1:
+    resolution: {integrity: sha512-3y7wEYr5GHRXiuPnyX8jb++7j3wW0AG3jbWwwKErWIW1Z9yvjM55ATI1sgz+RciOmnRomfNktNi3BIJ8E5se6g==}
+    dependencies:
+      '@upload-io/upload-api-client-upload-js': 2.10.0
+      progress-smoother: 1.3.0
+    dev: false
 
   /upper-case/1.1.3:
     resolution: {integrity: sha512-WRbjgmYzgXkCV7zNVpy5YgrHgbBv126rMALQQMrmzOVC4GM2waQ9x7xtm8VU+1yF2kWyPzI9zbZ48n4vSxwfSA==}
