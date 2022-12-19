@@ -11,65 +11,26 @@ export default {
       required: true,
     },
   },
+  emits: ['rendered'],
   data() {
     return {
       CANVAS: null,
       CTX: null,
       CANVAS_WIDTH: 480,
       CANVAS_HEIGHT: 720,
-      frameLeftSide: 120,
-      frameTopSide: 190,
-      frameTopCenter: 666,
-      frameWidth: 244,
-      frameHeight: 350,
-      watermarkMaxWidth: 244,
-      watermarkMaxHeight: 350,
       zoomStep: 10,
-      watermarkImageLoaded: false,
       blob: null,
       positionY: null,
       positionX: null,
       wmy: null,
       wmx: null,
       frame: null,
-      frameLoaded: false,
-      frameLoading: false,
       frames: [
-        {
-          src: 'frame_1.png',
-          top: 0,
-          left: 0,
-          width: 480,
-          height: 720,
-        },
-        {
-          src: 'frame_2.png',
-          top: 0,
-          left: 0,
-          width: 480,
-          height: 720,
-        },
-        {
-          src: 'frame_3.png',
-          top: 0,
-          left: 0,
-          width: 480,
-          height: 720,
-        },
-        {
-          src: 'frame_4.png',
-          top: 200,
-          left: 135,
-          width: 210,
-          height: 320,
-        },
-        {
-          src: 'frame_5.png',
-          top: 190,
-          left: 120,
-          width: 250,
-          height: 350,
-        },
+        { src: 'frame_1.png', top: 0, left: 0, width: 480, height: 720 },
+        { src: 'frame_2.png', top: 0, left: 0, width: 480, height: 720 },
+        { src: 'frame_3.png', top: 0, left: 0, width: 480, height: 720 },
+        { src: 'frame_4.png', top: 200, left: 135, width: 210, height: 320 },
+        { src: 'frame_5.png', top: 190, left: 120, width: 250, height: 350 },
       ],
     }
   },
@@ -236,56 +197,82 @@ export default {
         }
       }
     },
+    dataURLtoBlob(dataURL) {
+      const array = []
+      const binary = atob(dataURL.split(',')[1])
+      const len = binary.length
+      let i = 0
+
+      while (i < len) {
+        array.push(binary.charCodeAt(i))
+        i++
+      }
+
+      return new Blob([new Uint8Array(array)], {
+        type: 'image/png',
+      })
+    },
+    submitHandler() {
+      const file = this.dataURLtoBlob(this.CANVAS.toDataURL('image/jpeg'))
+
+      this.$emit('rendered', file)
+    },
   },
 }
 </script>
 
 <template>
-  <div class="flex justify-center items-center space-x-4">
-    <button
-      type="button"
-      class="py-2 px-2 cursor-pointer rounded-lg bg-gray-50 bg-opacity-10 hover:bg-opacity-20 transition-color duration-300"
-      @click="zoomHandler(-1)"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 512 512"
+  <div class="flex flex-col justify-center items-center space-y-4">
+    <div class="flex justify-center items-center space-x-4">
+      <button
+        type="button"
+        class="py-2 px-2 cursor-pointer rounded-lg bg-gray-50 bg-opacity-10 hover:bg-opacity-20 transition-color duration-300"
+        @click="zoomHandler(-1)"
       >
-        <path
-          d="M0 208v96c0 8.836 7.164 16 16 16h480c8.836 0 16-7.164 16-16v-96c0-8.836-7.164-16-16-16h-480c-8.836 0-16 7.164-16 16z"
-          fill="white"
-        />
-      </svg>
-    </button>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 512 512"
+        >
+          <path
+            d="M0 208v96c0 8.836 7.164 16 16 16h480c8.836 0 16-7.164 16-16v-96c0-8.836-7.164-16-16-16h-480c-8.836 0-16 7.164-16 16z"
+            fill="white"
+          />
+        </svg>
+      </button>
 
-    <canvas
-      id="canvas"
-      ref="canvas"
-      class="bg-white"
-      :style="`width: ${CANVAS_WIDTH}px; height: ${CANVAS_HEIGHT}px;`"
-      @mousedown="mouseDownHandler"
-      @mouseup="mouseUpHandler"
-      @mousemove="mouseMoveHandler"
-    />
+      <canvas
+        id="canvas"
+        ref="canvas"
+        class="bg-white"
+        :style="`width: ${CANVAS_WIDTH}px; height: ${CANVAS_HEIGHT}px;`"
+        @mousedown="mouseDownHandler"
+        @mouseup="mouseUpHandler"
+        @mousemove="mouseMoveHandler"
+      />
 
-    <button
-      type="button"
-      class="py-2 px-2 cursor-pointer rounded-lg bg-gray-50 bg-opacity-10 hover:bg-opacity-20 transition-color duration-300"
-      @click="zoomHandler(1)"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 512 512"
+      <button
+        type="button"
+        class="py-2 px-2 cursor-pointer rounded-lg bg-gray-50 bg-opacity-10 hover:bg-opacity-20 transition-color duration-300"
+        @click="zoomHandler(1)"
       >
-        <path
-          d="M496 192h-176v-176c0-8.836-7.164-16-16-16h-96c-8.836 0-16 7.164-16 16v176h-176c-8.836 0-16 7.164-16 16v96c0 8.836 7.164 16 16 16h176v176c0 8.836 7.164 16 16 16h96c8.836 0 16-7.164 16-16v-176h176c8.836 0 16-7.164 16-16v-96c0-8.836-7.164-16-16-16z"
-          fill="white"
-        />
-      </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 512 512"
+        >
+          <path
+            d="M496 192h-176v-176c0-8.836-7.164-16-16-16h-96c-8.836 0-16 7.164-16 16v176h-176c-8.836 0-16 7.164-16 16v96c0 8.836 7.164 16 16 16h176v176c0 8.836 7.164 16 16 16h96c8.836 0 16-7.164 16-16v-176h176c8.836 0 16-7.164 16-16v-96c0-8.836-7.164-16-16-16z"
+            fill="white"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <button class="text-[#00AA50]" @click="submitHandler">
+      Сохранить изображение
     </button>
   </div>
 </template>

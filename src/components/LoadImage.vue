@@ -29,3 +29,34 @@ export default {
     </label>
   </div>
 </template>
+
+<style scoped>
+.btn-group {
+  display: flex;
+}
+
+.btn-group__btn {
+  width: 415px;
+  height: 310px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: solid 7px #00AA50;
+  padding: 50px;
+  cursor: pointer;
+}
+
+.btn-group__btn--hover:hover {
+  background-color: rgba(249, 250, 251, 0.1);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn-group__text {
+  display: flex;
+  color: #00AA50;
+  font-size: 32px;
+  margin-bottom: 36px;
+}
+</style>
