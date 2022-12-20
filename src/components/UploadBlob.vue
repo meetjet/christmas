@@ -1,4 +1,5 @@
 <script>
+// import { Upload } from 'upload-js'
 import pkg from 'upload-js'
 const { Upload } = pkg
 
@@ -26,7 +27,8 @@ export default {
       onProgress: ({ progress }) => this.progress = progress,
     })
 
-    this.createLink(fileUrl)
+    this.loaded = true
+    // this.createLink(fileUrl)
   },
   methods: {
     createLink(url) {
@@ -49,12 +51,12 @@ export default {
 </script>
 
 <template>
-  <div class="px-2 text-white" :class="[loaded ? 'visible' : 'invisible']">
-    Скачивание изображения начнется автоматически. Если этого не произошло, нажмите на <a ref="link" href="" class="text-[#00AA50]" download>скачать</a>
+  <div v-if="loaded" class="px-2 text-[#00AA50] font-bold h-[40px] flex justify-center items-center">
+    Изображение успешно сохранено
   </div>
-  <div v-if="!loaded" ref="elem" class="progress">
+  <div v-else ref="elem" class="progress">
     <div class="progress-bar" :style="`width: ${progress}%`" />
-    <div class="progress-text">{{progress}}%</div>
+    <div class="progress-text">{{ progress }}%</div>
   </div>
 </template>
 
