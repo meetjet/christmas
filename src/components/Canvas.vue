@@ -1,6 +1,13 @@
 <script>
+import SaveImageButton from "~/components/SaveImageButton.vue";
+import ZoomButton from '~/components/ZoomButton.vue'
+
 export default {
   name: 'CanvasComponent',
+  components: {
+    SaveImageButton,
+    ZoomButton,
+  },
   props: {
     activeFrame: {
       type: Number,
@@ -26,11 +33,41 @@ export default {
       wmx: null,
       frame: null,
       frames: [
-        { src: 'frame_1.png', top: 0, left: 0, width: 480, height: 720 },
-        { src: 'frame_2.png', top: 0, left: 0, width: 480, height: 720 },
-        { src: 'frame_3.png', top: 0, left: 0, width: 480, height: 720 },
-        { src: 'frame_4.png', top: 200, left: 135, width: 210, height: 320 },
-        { src: 'frame_5.png', top: 190, left: 120, width: 250, height: 350 },
+        {
+          src: 'frame_1.png',
+          top: 0,
+          left: 0,
+          width: 480,
+          height: 720
+        },
+        {
+          src: 'frame_2.png',
+          top: 0,
+          left: 0,
+          width: 480,
+          height: 720
+        },
+        {
+          src: 'frame_3.png',
+          top: 0,
+          left: 0,
+          width: 480,
+          height: 720
+        },
+        {
+          src: 'frame_4.png',
+          top: 200,
+          left: 135,
+          width: 210,
+          height: 320
+        },
+        {
+          src: 'frame_5.png',
+          top: 190,
+          left: 120,
+          width: 250,
+          height: 350
+        },
       ],
     }
   },
@@ -125,8 +162,9 @@ export default {
       this.drawCanvas()
     },
     mouseDownHandler(e) {
-      if (!this.blob)
+      if (!this.blob) {
         return
+      }
 
       this.positionY = e.offsetY
       this.positionX = e.offsetX
@@ -140,8 +178,9 @@ export default {
       this.wmx = null
     },
     mouseMoveHandler(e) {
-      if (!this.positionY || !this.positionX || isNaN(this.wmy) || isNaN(this.wmx))
+      if (!this.positionY || !this.positionX || isNaN(this.wmy) || isNaN(this.wmx)) {
         return
+      }
 
       const moveY = e.offsetY - this.positionY
       const moveX = e.offsetX - this.positionX
@@ -209,7 +248,7 @@ export default {
       }
 
       return new Blob([new Uint8Array(array)], {
-        type: 'image/png',
+        type: 'image/jpeg',
       })
     },
     submitHandler() {
@@ -223,24 +262,8 @@ export default {
 
 <template>
   <div class="flex flex-col justify-center items-center space-y-4">
-    <div class="flex justify-center items-center space-x-4">
-      <button
-        type="button"
-        class="py-2 px-2 cursor-pointer rounded-lg bg-gray-50 bg-opacity-10 hover:bg-opacity-20 transition-color duration-300"
-        @click="zoomHandler(-1)"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 512 512"
-        >
-          <path
-            d="M0 208v96c0 8.836 7.164 16 16 16h480c8.836 0 16-7.164 16-16v-96c0-8.836-7.164-16-16-16h-480c-8.836 0-16 7.164-16 16z"
-            fill="white"
-          />
-        </svg>
-      </button>
+    <div class="flex justify-center items-center">
+      <ZoomButton zoom="out" class="hidden sm:block mr-4" @on-click="zoomHandler"/>
 
       <canvas
         id="canvas"
@@ -252,27 +275,14 @@ export default {
         @mousemove="mouseMoveHandler"
       />
 
-      <button
-        type="button"
-        class="py-2 px-2 cursor-pointer rounded-lg bg-gray-50 bg-opacity-10 hover:bg-opacity-20 transition-color duration-300"
-        @click="zoomHandler(1)"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 512 512"
-        >
-          <path
-            d="M496 192h-176v-176c0-8.836-7.164-16-16-16h-96c-8.836 0-16 7.164-16 16v176h-176c-8.836 0-16 7.164-16 16v96c0 8.836 7.164 16 16 16h176v176c0 8.836 7.164 16 16 16h96c8.836 0 16-7.164 16-16v-176h176c8.836 0 16-7.164 16-16v-96c0-8.836-7.164-16-16-16z"
-            fill="white"
-          />
-        </svg>
-      </button>
+      <ZoomButton zoom="in" class="hidden sm:block ml-4" @on-click="zoomHandler"/>
     </div>
 
-    <button class="text-[#00AA50]" @click="submitHandler">
-      Сохранить изображение
-    </button>
+    <div class="flex justify-center space-x-4 sm:hidden">
+      <ZoomButton zoom="out" @on-click="zoomHandler"/>
+      <ZoomButton zoom="in" @on-click="zoomHandler"/>
+    </div>
+
+    <SaveImageButton @click="submitHandler"/>
   </div>
 </template>

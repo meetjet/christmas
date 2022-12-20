@@ -13,10 +13,12 @@ declare module '@vue/runtime-core' {
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SaveImageButton: typeof import('./components/SaveImageButton.vue')['default']
     SelectFrame: typeof import('./components/SelectFrame.vue')['default']
     TheCounter: typeof import('./components/TheCounter.vue')['default']
     TheFooter: typeof import('./components/TheFooter.vue')['default']
     TheInput: typeof import('./components/TheInput.vue')['default']
     UploadBlob: typeof import('./components/UploadBlob.vue')['default']
+    ZoomButton: typeof import('./components/ZoomButton.vue')['default']
   }
 }
