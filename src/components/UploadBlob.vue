@@ -49,7 +49,7 @@ export default {
 </script>
 
 <template>
-  <div class="px-2" :class="[loaded ? 'visible' : 'invisible']">
+  <div class="px-2 text-white" :class="[loaded ? 'visible' : 'invisible']">
     Скачивание изображения начнется автоматически. Если этого не произошло, нажмите на <a ref="link" href="" class="text-[#00AA50]" download>скачать</a>
   </div>
   <div v-if="!loaded" ref="elem" class="progress">
