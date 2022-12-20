@@ -1,6 +1,6 @@
 <script>
-import { Upload } from 'upload-js'
-// const { Upload } = pkg
+import pkg from 'upload-js'
+const { Upload } = pkg
 
 export default {
   name: 'ChristmasPage',
