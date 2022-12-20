@@ -36,7 +36,7 @@ export default {
 }
 
 .btn-group__btn {
-  width: 415px;
+  width: 340px;
   height: 310px;
   display: flex;
   flex-direction: column;
@@ -46,6 +46,13 @@ export default {
   border: solid 7px #00AA50;
   padding: 50px;
   cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .btn-group__btn {
+    width: 415px;
+    height: 310px;
+  }
 }
 
 .btn-group__btn--hover:hover {
