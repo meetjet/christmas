@@ -1,7 +1,7 @@
 <script>
-// import { Upload } from 'upload-js'
-import pkg from 'upload-js'
-const { Upload } = pkg
+import { Upload } from 'upload-js'
+// import pkg from 'upload-js'
+// const { Upload } = pkg
 
 export default {
   name: 'UploadBlobComponent',
@@ -19,7 +19,7 @@ export default {
   },
   async mounted() {
     const upload = Upload({
-      apiKey: 'free',
+      apiKey: 'public_kW15az87NcfuAL44axpzXaNUazuc',
     })
 
     const { fileUrl } = await upload.uploadFile(this.blob, {
