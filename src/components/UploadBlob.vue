@@ -1,7 +1,7 @@
 <script>
-import { Upload } from 'upload-js'
-// import pkg from 'upload-js'
-// const { Upload } = pkg
+// import { Upload } from 'upload-js'
+import pkg from 'upload-js'
+const { Upload } = pkg
 
 export default {
   name: 'UploadBlobComponent',
