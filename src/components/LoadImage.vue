@@ -1,19 +1,18 @@
 <script>
+import Webcam from 'webcam-easy'
+
 export default {
   name: 'LoadImageComponent',
-  emits: ['loaded'],
-  methods: {},
+  emits: ['loaded', 'take'],
 }
 </script>
 
 <template>
-  <div class="btn-group space-x-6">
-    <template v-if="false">
-      <button type="button" class="btn-group__btn btn-group__btn--hover">
-        <span class="btn-group__text">Сделать фото</span>
-        <img src="/camera.svg" alt="camera svg icon" width="185" height="135">
-      </button>
-    </template>
+  <div class="lg:flex space-y-6 lg:space-y-0 lg:space-x-6">
+    <button type="button" class="btn-group__btn btn-group__btn--hover" @click="$emit('take')">
+      <span class="btn-group__text">Сделать фото</span>
+      <img src="/camera.svg" alt="camera svg icon" width="185" height="135">
+    </button>
 
     <label for="imageLoader" class="btn-group__btn btn-group__btn--hover">
       <input
@@ -31,10 +30,6 @@ export default {
 </template>
 
 <style scoped>
-.btn-group {
-  display: flex;
-}
-
 .btn-group__btn {
   width: 340px;
   height: 310px;

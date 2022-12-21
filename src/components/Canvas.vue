@@ -1,6 +1,7 @@
 <script>
-import SaveImageButton from "~/components/SaveImageButton.vue";
+import SaveImageButton from '~/components/SaveImageButton.vue';
 import ZoomButton from '~/components/ZoomButton.vue'
+import base64toBlob from '../util/base64toBlob'
 
 export default {
   name: 'CanvasComponent',
@@ -162,9 +163,8 @@ export default {
       this.drawCanvas()
     },
     mouseDownHandler(e) {
-      if (!this.blob) {
+      if (!this.blob)
         return
-      }
 
       this.positionY = e.offsetY
       this.positionX = e.offsetX
@@ -236,23 +236,11 @@ export default {
         }
       }
     },
-    dataURLtoBlob(dataURL) {
-      const array = []
-      const binary = atob(dataURL.split(',')[1])
-      const len = binary.length
-      let i = 0
-
-      while (i < len) {
-        array.push(binary.charCodeAt(i))
-        i++
-      }
-
-      return new Blob([new Uint8Array(array)], {
-        type: 'image/jpeg',
-      })
-    },
     submitHandler() {
-      const file = this.dataURLtoBlob(this.CANVAS.toDataURL('image/jpeg'))
+      const file = base64toBlob(
+        this.CANVAS.toDataURL('image/jpeg'),
+        'image/jpeg',
+      )
 
       this.$emit('rendered', file)
     },

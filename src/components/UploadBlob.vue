@@ -19,6 +19,7 @@ export default {
   },
   async mounted() {
     const upload = Upload({
+      // apiKey: 'public_W142hZG8ZQQAfqXjwEEYtBbxeqQb',
       apiKey: 'public_kW15az87NcfuAL44axpzXaNUazuc',
     })
 

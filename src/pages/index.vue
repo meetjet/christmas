@@ -1,13 +1,6 @@
 <script>
-import LoadImage from '~/components/LoadImage.vue'
-import UploadBlob from '~/components/UploadBlob.vue'
-
 export default {
   name: 'ChristmasPage',
-  components: {
-    UploadBlob,
-    LoadImage,
-  },
   layouts: 'christmas',
   data() {
     return {
@@ -23,11 +16,20 @@ export default {
 
 <template>
   <template v-if="step === 1 || step === 4">
-    <img src="/logo-svg.svg" alt="лого лика ставок" width="250" height="260" style="margin-bottom: 95px;">
+    <a href="https://ligastavoknewyear.ru/" target="_blank" class="flex mb-[50px]">
+      <img src="/logo.svg" alt="лого лика ставок" width="250" height="260">
+    </a>
   </template>
 
-  <LoadImage v-if="step === 1" @loaded="watermark = $event; step = 2" />
-  <SelectFrame v-if="step === 2" @selected="activeFrame = $event; step = 3" />
-  <Canvas v-if="step === 3" :watermark="watermark" :active-frame="activeFrame" @rendered="blob = $event; step = 4" />
-  <UploadBlob v-if="step === 4" :blob="blob" />
+  <a
+    href="https://ligastavoknewyear.ru/"
+    target="_blank"
+    class="text-[#00AA50] mb-[45px] hover:text-opacity-80 transition-color duration-300"
+  >Вернуться на главную</a>
+
+  <LoadImage v-if="step === 1" @loaded="watermark = $event; step = 2" @take="step = 'take'"/>
+  <TakePhoto v-if="step === 'take'" @loaded="watermark = $event; step = 2"/>
+  <SelectFrame v-if="step === 2" @selected="activeFrame = $event; step = 3"/>
+  <Canvas v-if="step === 3" :watermark="watermark" :active-frame="activeFrame" @rendered="blob = $event; step = 4"/>
+  <UploadBlob v-if="step === 4" :blob="blob"/>
 </template>

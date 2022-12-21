@@ -15,6 +15,7 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     SaveImageButton: typeof import('./components/SaveImageButton.vue')['default']
     SelectFrame: typeof import('./components/SelectFrame.vue')['default']
+    TakePhoto: typeof import('./components/TakePhoto.vue')['default']
     TheCounter: typeof import('./components/TheCounter.vue')['default']
     TheFooter: typeof import('./components/TheFooter.vue')['default']
     TheInput: typeof import('./components/TheInput.vue')['default']
