@@ -21,11 +21,11 @@ export default {
     </a>
   </template>
 
-  <template v-if="step === 2 || step === 3 || step === 4">
+  <template v-if="step === 2 || step === 3">
     <a
       href="https://ligastavoknewyear.ru/"
       class="border-2 border-[#00AA50] p-2 text-[#00AA50] select-none bg-gray-50 bg-opacity-10 hover:bg-opacity-20 transition-color duration-300"
-    >Вернуться на главную</a>
+    >Вернуться в начало</a>
   </template>
 
   <LoadImage v-if="step === 1" @loaded="watermark = $event; step = 2" @take="step = 'take'"/>
