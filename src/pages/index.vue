@@ -25,7 +25,7 @@ export default {
     <p class="text-white">
       Простые шаги для поднятия новогоднего настроения:
     </p>
-    <ul class="list-decimal text-white">
+    <ul class="list-decimal list-inside text-white">
       <li>Загрузи готовое фото/ сделай новое</li>
       <li>Примерь новогодние рамки</li>
       <li>Сохрани получившееся фото и поделись им в соц. сетях</li>
