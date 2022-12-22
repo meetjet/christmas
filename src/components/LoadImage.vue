@@ -1,6 +1,4 @@
 <script>
-import Webcam from 'webcam-easy'
-
 export default {
   name: 'LoadImageComponent',
   emits: ['loaded', 'take'],
