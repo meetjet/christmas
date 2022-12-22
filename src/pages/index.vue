@@ -17,14 +17,14 @@ export default {
 <template>
   <template v-if="step === 1 || step === 4">
     <a href="https://ligastavoknewyear.ru/" target="_blank" class="flex mb-[50px]">
-      <img src="/logo.svg" alt="Лого Лига Ставок" width="250" height="260">
+      <img class="max-w-[180px]" src="/logo.svg" alt="Лого Лига Ставок">
     </a>
   </template>
 
   <template v-if="step === 2 || step === 3">
     <a
       href="https://ligastavoknewyear.ru/"
-      class="border-2 border-[#00AA50] p-2 text-[#00AA50] select-none bg-gray-50 bg-opacity-10 hover:bg-opacity-20 transition-color duration-300"
+      class="border-2 border-[#00AA50] p-2 text-[#00AA50] select-none bg-gray-50 bg-opacity-10 hover:bg-opacity-20 transition-color duration-300 mb-4"
     >Вернуться в начало</a>
   </template>
 
