@@ -21,6 +21,18 @@ export default {
     </a>
   </template>
 
+  <template v-if="step === 1">
+    <p class="text-white">
+      Простые шаги для поднятия новогоднего настроения:
+    </p>
+    <ul class="list-decimal text-white">
+      <li>Загрузи готовое фото/ сделай новое</li>
+      <li>Примерь новогодние рамки</li>
+      <li>Сохрани получившееся фото и поделись им в соц. сетях</li>
+      <li>Загляни на эту страничку 24 декабря, чтобы увидеть сюрприз</li>
+    </ul>
+  </template>
+
   <template v-if="step === 2 || step === 3">
     <a
       href="https://ligastavoknewyear.ru/"
