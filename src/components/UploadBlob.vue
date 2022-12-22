@@ -57,7 +57,7 @@ export default {
 </script>
 
 <template>
-  <div v-if="loaded" class="px-2 font-bold h-[40px]">
+  <div v-if="loaded" class="px-2 text-white font-bold h-[40px]">
     <div class="text-center">Изображение успешно сохранено.</div>
     <div class="text-center">Скачивание начнется автоматически, но если этого не произошло, нажмите <a ref="link" href="" target="_blank" class="text-[#00AA50]"> скачать</a></div>
   </div>
@@ -79,7 +79,7 @@ export default {
 .progress-bar {
   width: 100%;
   height: 100%;
-  background: #00AA50;
+  background-color: #00AA50;
 }
 
 .progress-text {
@@ -87,6 +87,7 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: white;
   font-size: 18px;
   padding: 3px 0;
   font-weight: 500;

@@ -1,8 +1,5 @@
 <template>
-  <main
-    class="min-h-screen flex flex-col justify-center items-center bg-no-repeat bg-center bg-cover bg-[#100f37] py-8"
-    style="background-image: url('/bg.jpg');"
-  >
+  <main class="flex flex-col justify-center items-center py-8">
     <RouterView />
   </main>
 </template>
