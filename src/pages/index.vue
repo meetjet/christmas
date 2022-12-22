@@ -31,7 +31,7 @@ export default {
       <li>Сохрани получившееся фото и поделись им в соц. сетях</li>
       <li>Загляни на эту страничку 24 декабря, чтобы увидеть сюрприз</li>
     </ul>
-    <div class="px-4"></div>
+    <div class="py-4"></div>
   </template>
 
   <template v-if="step === 2 || step === 3">
