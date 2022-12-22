@@ -100,10 +100,10 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-pwa
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.png', 'safari-pinned-tab.svg'],
+      includeAssets: ['favicon.ico', 'safari-pinned-tab.svg'],
       manifest: {
-        name: 'Vitesse',
-        short_name: 'Vitesse',
+        name: 'В гостях у ЛИГИ СТАВОК | Фото',
+        short_name: 'В гостях у ЛИГИ СТАВОК | Фото',
         theme_color: '#ffffff',
         icons: [
           {
