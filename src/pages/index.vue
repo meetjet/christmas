@@ -17,15 +17,16 @@ export default {
 <template>
   <template v-if="step === 1 || step === 4">
     <a href="https://ligastavoknewyear.ru/" target="_blank" class="flex mb-[50px]">
-      <img src="/logo.svg" alt="лого лика ставок" width="250" height="260">
+      <img src="/logo.svg" alt="Лого Лига Ставок" width="250" height="260">
     </a>
   </template>
 
-  <a
-    href="https://ligastavoknewyear.ru/"
-    target="_blank"
-    class="text-[#00AA50] mb-[45px] hover:text-opacity-80 transition-color duration-300"
-  >Вернуться на главную</a>
+  <template v-if="step === 2 || step === 3 || step === 4">
+    <a
+      href="https://ligastavoknewyear.ru/"
+      class="text-[#00AA50] mb-[45px] hover:text-opacity-80 transition-color duration-300"
+    >Вернуться на главную</a>
+  </template>
 
   <LoadImage v-if="step === 1" @loaded="watermark = $event; step = 2" @take="step = 'take'"/>
   <TakePhoto v-if="step === 'take'" @loaded="watermark = $event; step = 2"/>
