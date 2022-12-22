@@ -29,15 +29,20 @@ export default {
     })
 
     this.loaded = true
-    // this.createLink(fileUrl)
+    this.createLink(fileUrl)
   },
   methods: {
     createLink(url) {
+      let filename = url.split('/')
+
+      filename = filename[filename.length - 1]
+
       fetch(url)
         .then(resp => resp.blob())
         .then((blob) => {
           const url = window.URL.createObjectURL(blob)
 
+          this.$refs.link.setAttribute('download', filename)
           this.$refs.link.setAttribute('href', url)
           this.$refs.link.click()
 
@@ -52,8 +57,9 @@ export default {
 </script>
 
 <template>
-  <div v-if="loaded" class="px-2 text-[#00AA50] font-bold h-[40px] flex justify-center items-center">
-    Изображение успешно сохранено
+  <div v-if="loaded" class="px-2 font-bold h-[40px]">
+    <div class="text-center">Изображение успешно сохранено.</div>
+    <div class="text-center">Скачивание начнется автоматически, но если этого не произошло, нажмите <a ref="link" href="" target="_blank" class="text-[#00AA50]"> скачать</a></div>
   </div>
   <div v-else ref="elem" class="progress">
     <div class="progress-bar" :style="`width: ${progress}%`" />
