@@ -55,12 +55,7 @@ export default {
 <template>
   <audio id="snapSound" src="/snap.mp3" preload="auto"/>
 
-  <div class="relative" style="background-color: lightgray;">
-    <video id="webcam" class="top-0 left-0" autoplay playsinline width="640" height="640"/>
-    <canvas id="canvas" class="hidden absolute top-0 left-0" width="640" height="480"/>
-  </div>
-
-  <div class="h-[44px] mt-4 space-x-4">
+  <div class="h-[44px] mb-4 space-x-4">
     <button
       v-if="webcamStarted"
       class="border-2 border-[#00AA50] p-2 text-[#00AA50] select-none bg-gray-50 bg-opacity-10 hover:bg-opacity-20 transition-color duration-300"
@@ -84,6 +79,11 @@ export default {
     >
       Сделать новое
     </button>
+  </div>
+
+  <div class="relative" style="background-color: lightgray;">
+    <video id="webcam" class="top-0 left-0" autoplay playsinline width="640" height="640"/>
+    <canvas id="canvas" class="hidden absolute top-0 left-0" width="640" height="480"/>
   </div>
 </template>
 
