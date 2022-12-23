@@ -98,7 +98,11 @@ export default {
         const img = new Image()
 
         img.onload = () => {
-          const newSize = this.scaleDown(img.width, img.height, this.frame.width, this.frame.height)
+          let newSize = this.scaleDown(img.width, img.height, this.frame.width, this.frame.height)
+
+          if (!newSize) {
+            newSize = this.scaleUp(img.width, img.height, this.frame.width, this.frame.height)
+          }
 
           img.width = newSize.width
           img.height = newSize.height
