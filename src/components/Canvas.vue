@@ -119,14 +119,19 @@ export default {
       this.CANVAS.width = this.CANVAS_WIDTH
       this.CANVAS.height = this.CANVAS_HEIGHT
 
-      const x = this.blob.getAttribute('x')
-      const y = this.blob.getAttribute('y')
-
       this.CTX.fillStyle = 'white'
       this.CTX.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT)
 
-      this.blob && this.CTX.drawImage(this.blob, x, y, this.blob.width, this.blob.height)
-      this.frame && this.CTX.drawImage(this.frame, 0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT)
+      if (this.blob) {
+        const x = this.blob.getAttribute('x')
+        const y = this.blob.getAttribute('y')
+
+        this.CTX.drawImage(this.blob, x, y, this.blob.width, this.blob.height)
+      }
+
+      if (this.frame) {
+        this.CTX.drawImage(this.frame, 0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT)
+      }
     },
     zoomHandler(direction) {
       const img = this.blob
